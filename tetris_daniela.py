@@ -2,6 +2,21 @@ import pygame
 import sys
 import random
 
+def generate_random_shape():
+    rand_shape = random.randrange(1, 3)
+    if rand_shape == 1:     # S-Shape
+        pygame.draw.rect(screen, shape_color, (50, count_offset, 50, 50))
+        pygame.draw.rect(screen, shape_color, (100, count_offset, 50, 50))
+        pygame.draw.rect(screen, shape_color, (0, count_offset + 50, 50, 50))
+        pygame.draw.rect(screen, shape_color, (50, count_offset + 50, 50, 50))
+
+    elif rand_shape == 2:   # U-Shape
+        pygame.draw.rect(screen, shape_color, (0, count_offset, 50, 50))
+        pygame.draw.rect(screen, shape_color, (100, count_offset, 50, 50))
+        pygame.draw.rect(screen, shape_color, (0, count_offset + 50, 50, 50))
+        pygame.draw.rect(screen, shape_color, (50, count_offset + 50, 50, 50))
+        pygame.draw.rect(screen, shape_color, (100, count_offset+50, 50, 50))
+
 pygame.init()
 
 # 1. DEFINITIONS
@@ -16,10 +31,11 @@ clock = pygame.time.Clock()
 # We put a ball on the screen
 ball = pygame.Rect(120, 200, 50, 50)
 
-# We set the variable count for flickering
-count = 0
+# We set the variable count_flicker for flickering
+count_flicker = 0
 
-
+# We set the count_offset for the movement offset
+count_offset = 0
 # 2. GAME LOOP
 while True:
     # Establish when the game is over, to avoid infinite loops
@@ -31,17 +47,17 @@ while True:
     # The appearance of the screen
     screen.fill('black')
 
-    # rand_color = random.randrange(1, 5)
-    # if rand_color == 1:
-    #     shape_color = 'red'
-    # elif rand_color == 2:
-    #     shape_color = 'blue'
-    # elif rand_color == 3:
-    #     shape_color = 'orange'
-    # elif rand_color == 4:
-    #     shape_color = 'green'
-    #     rand_color = 0
-    # count += 1
+    rand_color = random.randrange(1, 5)
+    if rand_color == 1:
+        shape_color = 'red'
+    elif rand_color == 2:
+        shape_color = 'blue'
+    elif rand_color == 3:
+        shape_color = 'orange'
+    elif rand_color == 4:
+        shape_color = 'green'
+        rand_color = 0
+    count_flicker += 1
 
     # Draw the game object(s) on the screen:
     # A BALL
@@ -54,21 +70,21 @@ while True:
     # pygame.draw.rect(screen, shape_color, (50, 50, 50, 50))
 
     # A moving downwards red S_SHAPE
-    pygame.draw.rect(screen, 'red', (50, count, 50, 50))
-    pygame.draw.rect(screen, 'red', (100, count, 50, 50))
-    pygame.draw.rect(screen, 'red', (0, count+50, 50, 50))
-    pygame.draw.rect(screen, 'red', (50, count+50, 50, 50))
-    # generate_random_shape()
-    count += 20
+    # pygame.draw.rect(screen, 'red', (50, count_offset, 50, 50))
+    # pygame.draw.rect(screen, 'red', (100, count_offset, 50, 50))
+    # pygame.draw.rect(screen, 'red', (0, count_offset+50, 50, 50))
+    # pygame.draw.rect(screen, 'red', (50, count_offset+50, 50, 50))
+    generate_random_shape()
+    count_offset += 20
 
-    clock.tick(20)
-    # 60 frames per second - this sets a constant speed of the objects on the screen
-    # otherwise, they would move at the speed of the computer - as fast as it can
-    # afford at a certain time, therefore not constant.
+    clock.tick(2)
+
     pygame.display.flip()
     # pygame.display.update()
     # clock.tick(60)
-
+    # 60 frames per second - this sets a constant speed of the objects on the screen
+    # otherwise, they would move at the speed of the computer - as fast as it can
+    # afford at a certain time, therefore not constant.
 
 
 
