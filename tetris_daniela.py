@@ -45,7 +45,13 @@ while True:
 
     # Draw the game object(s) on the screen:
     # A BALL
-    pygame.draw.ellipse(screen, shape_color, ball)
+    # pygame.draw.ellipse(screen, shape_color, ball)
+
+    # A red S-SHAPE
+    pygame.draw.rect(screen, shape_color, (50, 0, 50, 50))
+    pygame.draw.rect(screen, shape_color, (100, 0, 50, 50))
+    pygame.draw.rect(screen, shape_color, (0, 50, 50, 50))
+    pygame.draw.rect(screen, shape_color, (50, 50, 50, 50))
 
     clock.tick(6)
     # 60 frames per second - this sets a constant speed of the objects on the screen
