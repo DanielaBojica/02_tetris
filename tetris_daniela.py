@@ -31,11 +31,23 @@ while True:
     # The appearance of the screen
     screen.fill('black')
 
+    rand_color = random.randrange(1, 5)
+    if rand_color == 1:
+        shape_color = 'red'
+    elif rand_color == 2:
+        shape_color = 'blue'
+    elif rand_color == 3:
+        shape_color = 'orange'
+    elif rand_color == 4:
+        shape_color = 'green'
+        rand_color = 0
+    count += 1
+
     # Draw the game object(s) on the screen:
     # A BALL
-    pygame.draw.ellipse(screen, 'red', ball)
+    pygame.draw.ellipse(screen, shape_color, ball)
 
-    clock.tick(60)
+    clock.tick(6)
     # 60 frames per second - this sets a constant speed of the objects on the screen
     # otherwise, they would move at the speed of the computer - as fast as it can
     # afford at a certain time, therefore not constant.
