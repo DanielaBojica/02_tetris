@@ -98,7 +98,7 @@ import random
 pygame.init()
 
 # Constants
-WIDTH, HEIGHT = 500, 600
+WIDTH, HEIGHT = 600, 800
 SCREEN_SIZE = (WIDTH, HEIGHT)
 BLOCK_SIZE = 50
 # FPS = 6
@@ -131,59 +131,60 @@ def draw_shape(surface, shape, x, y, color):
     for row in range(len(shape)):
         for col in range(len(shape[row])):
             if shape[row][col] == 1:
-                pygame.draw.rect(surface, color, (x + col * BLOCK_SIZE, y + row * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE))
+                cell_rect = pygame.Rect(x + col * BLOCK_SIZE, y + row * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE)
+                pygame.draw.rect(surface, color, cell_rect)
+                # pygame.draw.rect(surface, color, (x + col * BLOCK_SIZE, y + row * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE))
 
 
 def generate_shape():
     return random.choice(shapes)
 
 
-def main():
+
     # Initial shape
-    current_shape = generate_shape()
-    current_x = WIDTH // 2 - (len(current_shape["shape"][0]) * BLOCK_SIZE // 2)
-    current_y = 0
+current_shape = generate_shape()
+current_x = WIDTH // 2 - (len(current_shape["shape"][0]) * BLOCK_SIZE // 2)
+current_y = 0
 
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
 
-        # Moving the shapes
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and current_x > 0:
-            current_x -= BLOCK_SIZE
-        if keys[pygame.K_RIGHT] and current_x < WIDTH - len(current_shape["shape"][0]) * BLOCK_SIZE:
-            current_x += BLOCK_SIZE
+    # Moving the shapes
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and current_x > 0:
+        current_x -= BLOCK_SIZE
+    if keys[pygame.K_RIGHT] and current_x < WIDTH - len(current_shape["shape"][0]) * BLOCK_SIZE:
+        current_x += BLOCK_SIZE
 
-        # Update the position of the shape
-        current_y += BLOCK_SIZE
+    # Update the position of the shape
+    current_y += BLOCK_SIZE
 
-        # Check if the shape has reached the bottom
-        if current_y >= HEIGHT:
-            current_shape = generate_shape()
-            current_x = WIDTH // 2 - len(current_shape['shape'][0]) * BLOCK_SIZE // 2
-            current_y = 0
+    # Check if the shape has reached the bottom
+    if current_y >= HEIGHT:
+        current_shape = generate_shape()
+        current_x = WIDTH // 2 - len(current_shape['shape'][0]) * BLOCK_SIZE // 2
+        current_y = 0
 
-        # Clear the screen
-        screen.fill(BLACK)
+    # Clear the screen
+    screen.fill(BLACK)
 
-        # Draw the current shape
-        draw_shape(screen, current_shape['shape'], current_x, current_y, current_shape["color"])
+    # Draw the current shape
+    draw_shape(screen, current_shape['shape'], current_x, current_y, current_shape["color"])
 
-        # Update the display
-        # pygame.display.flip()
+    # Update the display
+    # pygame.display.flip()
 
-        # Cap the frame rate
+    # Cap the frame rate
 
-        clock.tick(4)
-        # Update the display
-        pygame.display.flip()
+    clock.tick(4)
+    # Update the display
+    pygame.display.flip()
 
 
-if __name__ == "__main__":
-    main()
+
 
 
 
