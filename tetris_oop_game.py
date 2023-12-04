@@ -23,12 +23,22 @@ class Game:
 
     def move_left(self):
         self.current_shape.move(0, -1)
+        if self.shape_inside() == False:
+            self.current_shape.move(0, 1)
 
     def move_right(self):
         self.current_shape.move(0, 1)
+        if self.shape_inside() == False:
+            self.current_shape.move(0, -1)
+
 
     def move_down(self):
         self.current_shape.move(1, 0)
+        if self.shape_inside() == False:
+            self.current_shape.move(-1, 0)
+
+    def rotate(self):
+        self.current_shape.rotate()
 
     def shape_inside(self):
         tiles = self.current_shape.get_cell_positions()

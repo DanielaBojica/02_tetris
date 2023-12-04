@@ -28,6 +28,13 @@ class Shape:
             moved_tiles.append(position)
         return moved_tiles
 
+    # we create a method for the rotation of the shape
+    def rotate(self):
+        self.rotation_state += 1
+        if self.rotation_state == len(self.cells_rotations):  # they are 3 except for OShape, which has 1
+            self.rotation_state = 0
+
+
     def draw(self, screen):
         tiles = self.get_cell_positions()
         for tile in tiles:
