@@ -21,6 +21,15 @@ class Game:
         self.shapes.remove(shape)
         return shape
 
+    def move_left(self):
+        self.current_shape.move(0, -1)
+
+    def move_right(self):
+        self.current_shape.move(0, 1)
+
+    def move_down(self):
+        self.current_shape.move(1, 0)
+
     def draw(self, screen):
         self.grid.draw(screen)
         self.current_shape.draw(screen)
