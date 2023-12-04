@@ -39,6 +39,8 @@ class Game:
 
     def rotate(self):
         self.current_shape.rotate()
+        if self.shape_inside() == False:
+            self.current_shape.undo_rotate()
 
     def shape_inside(self):
         tiles = self.current_shape.get_cell_positions()
