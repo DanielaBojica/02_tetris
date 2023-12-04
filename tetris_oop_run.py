@@ -13,7 +13,8 @@ clock = pygame.time.Clock()
 
 game_grid = Grid()
 
-shape = LShape()
+shape = TShape()
+shape.move(4, 3)
 
 while True:
     for event in pygame.event.get():
