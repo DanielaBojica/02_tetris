@@ -1,7 +1,6 @@
 import pygame
 import sys
-from tetris_oop_grid import Grid
-from tetris_oop_shapes import *
+from tetris_oop_game import Game
 
 pygame.init()
 dark_blue = (44, 44, 127)
@@ -11,10 +10,7 @@ pygame.display.set_caption("Tetris")
 
 clock = pygame.time.Clock()
 
-game_grid = Grid()
-
-shape = TShape()
-shape.move(4, 3)
+game = Game()
 
 while True:
     for event in pygame.event.get():
@@ -23,8 +19,7 @@ while True:
             sys.exit()
 
     screen.fill(dark_blue)
-    game_grid.draw(screen)
-    shape.draw(screen)
+    game.draw(screen)
 
     pygame.display.flip()
     clock.tick(60)
