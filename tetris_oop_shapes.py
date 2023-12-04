@@ -31,9 +31,13 @@ class Shape:
     # we create a method for the rotation of the shape
     def rotate(self):
         self.rotation_state += 1
-        if self.rotation_state == len(self.cells_rotations):  # they are 3 except for OShape, which has 1
+        if self.rotation_state == len(self.cells_rotations) - 1:  #!!!! I added -1 !!!
             self.rotation_state = 0
 
+    def undo_rotate(self):
+        self.rotation_state -= 1
+        if self.rotation_state == -1:
+            self.rotation_state = len(self.cells_rotations) - 1
 
     def draw(self, screen):
         tiles = self.get_cell_positions()
