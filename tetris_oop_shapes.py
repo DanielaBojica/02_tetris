@@ -45,6 +45,7 @@ class LShape(Shape):
             2: [Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 0)],
             3: [Position(0, 0), Position(0, 1), Position(1, 1), Position(2, 1)]
         }
+        self.move(0, 3)
 
 
 class JShape(Shape):
@@ -56,6 +57,7 @@ class JShape(Shape):
             2: [Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 2)],
             3: [Position(0, 1), Position(1, 1), Position(2, 0), Position(2, 1)]
         }
+        self.move(0, 3)
 
 
 class IShape(Shape):
@@ -67,6 +69,7 @@ class IShape(Shape):
             2: [Position(2, 0), Position(2, 1), Position(2, 2), Position(2, 3)],
             3: [Position(0, 1), Position(1, 1), Position(2, 1), Position(3, 1)]
         }
+        self.move(0, 3)
 
 
 class OShape(Shape):
@@ -75,6 +78,7 @@ class OShape(Shape):
         self.cells_rotations = {
             0: [Position(0, 0), Position(0, 1), Position(1, 0), Position(1, 1)],
         }
+        self.move(0, 3)
 
 
 class SShape(Shape):
@@ -86,6 +90,7 @@ class SShape(Shape):
             2: [Position(1, 1), Position(1, 2), Position(2, 0), Position(2, 1)],
             3: [Position(0, 0), Position(1, 0), Position(1, 1), Position(2, 1)]
         }
+        self.move(0, 3)
 
 
 class TShape(Shape):
@@ -97,6 +102,7 @@ class TShape(Shape):
             2: [Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 1)],
             3: [Position(0, 1), Position(1, 0), Position(1, 1), Position(2, 1)]
         }
+        self.move(0, 3)
 
 
 class ZShape(Shape):
@@ -108,4 +114,5 @@ class ZShape(Shape):
             2: [Position(1, 0), Position(1, 1), Position(2, 1), Position(2, 2)],
             3: [Position(0, 1), Position(1, 0), Position(1, 1), Position(2, 0)]
         }
+        self.move(0, 3)
 
