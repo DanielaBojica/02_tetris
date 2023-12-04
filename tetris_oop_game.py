@@ -30,6 +30,13 @@ class Game:
     def move_down(self):
         self.current_shape.move(1, 0)
 
+    def shape_inside(self):
+        tiles = self.current_shape.get_cell_positions()
+        for tile in tiles:
+            if self.grid.is_inside(tile.row, tile.col) == False:
+                return False
+            return True
+
     def draw(self, screen):
         self.grid.draw(screen)
         self.current_shape.draw(screen)
